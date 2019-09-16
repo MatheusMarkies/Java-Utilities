@@ -17,9 +17,11 @@ public class Create_TXT {
     
     static File TXT_File = new File("FilePatch\\FileName.txt");
     
-    public static void Create_TXT_File(){
+    public static void Create_TXT_File(File file){
         
-                     try {
+        TXT_File = file;
+        
+            try {
             TXT_File.createNewFile();
             FileWriter IndexWriter = null;
             IndexWriter = new FileWriter(TXT_File.getAbsoluteFile());

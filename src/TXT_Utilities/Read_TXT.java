@@ -23,17 +23,23 @@ public class Read_TXT {
     static File TXT_File = new File("FilePatch\\FileName.txt");
     static FileReader Read_txt;
     
-    static String LineContent;
-    
-    static ArrayList<String> TXT_Content = new ArrayList<String>();
+    public static String LineContent;
+    public static ArrayList<String> TXT_Content = new ArrayList<String>();
     
     static Scanner Reader;
     
     static int LineNumbers;
     static int ReadLine;
+    static boolean ReadBool;
     
-    public static void Read_TXT_File(){
+    public static void Read_TXT_File(File file){
         
+        if(ReadLine == 0){
+            TXT_File = file;
+            ReadBool = true;
+        }
+        
+        while (ReadBool) {            
         try {
             Read_txt = new FileReader(TXT_File);
             Reader  = new Scanner(TXT_File);
@@ -50,12 +56,21 @@ public class Read_TXT {
         
         if(ReadLine == LineNumbers){
             Reader.close();
+            ReadLine = 0;
+            ReadBool = false;
+        }
         }
         
     }
     
-    public static void Get_TXT_Line_Content(int Line){
+    public static void Get_TXT_Line_Content(File file,int Line){
         
+        if(ReadLine == 0){
+            TXT_File = file;
+            ReadBool = true;
+        }
+        
+        while (ReadBool) {  
         try {
             Read_txt = new FileReader(TXT_File);
             Reader  = new Scanner(TXT_File);
@@ -64,6 +79,8 @@ public class Read_TXT {
             
             if(ReadLine == Line){
             Reader.close();
+            ReadLine = 0;
+            ReadBool = false;
             }else{
             ReadLine += 1;
             }
@@ -71,9 +88,8 @@ public class Read_TXT {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Read_TXT.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
     }
-    
+        
+  }
     
 }
