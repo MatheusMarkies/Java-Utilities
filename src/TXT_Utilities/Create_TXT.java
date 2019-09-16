@@ -15,9 +15,9 @@ import java.io.IOException;
  */
 public class Create_TXT {
     
-    File TXT_File = new File("FilePatch\\FileName.txt");
+    static File TXT_File = new File("FilePatch\\FileName.txt");
     
-    public void Create_TXT_File(){
+    public static void Create_TXT_File(){
         
                      try {
             TXT_File.createNewFile();
