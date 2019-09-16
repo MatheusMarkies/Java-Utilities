@@ -27,7 +27,7 @@ public class Create_TXT {
             IndexWriter = new FileWriter(TXT_File.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(IndexWriter);
             
-            bw.write("Write...");
+            //bw.write("Write...");
             bw.close();  
             
              } catch (IOException ex) {
