@@ -38,4 +38,11 @@ public class Search_Words_TXT {
         
     }
     
+    public static ArrayList<String> Get_Word_Line(){
+    return Word_Line;
+    }
+    public static ArrayList<Integer> Get_Word_Index(){
+    return Word_Index;
+    }
+    
 }
