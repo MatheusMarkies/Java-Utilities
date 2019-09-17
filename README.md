@@ -25,3 +25,5 @@ Copy lines or scripts and add to your project.
 (TXT --> file (TXT FILE ONLY))
 
 API mode: Future versions only
+
+By Matheus Markies
