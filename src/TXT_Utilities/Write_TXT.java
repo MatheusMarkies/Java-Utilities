@@ -22,7 +22,7 @@ public class Write_TXT {
         IndexWriter = new FileWriter(file.getAbsoluteFile());
         BufferedWriter bw = new BufferedWriter(IndexWriter);
             
-        bw.write(Text);
+        bw.write(Text+"\n");
         bw.close();  
         
     }
@@ -33,7 +33,7 @@ public class Write_TXT {
         IndexWriter = new FileWriter(file.getAbsoluteFile());
         BufferedWriter bw = new BufferedWriter(IndexWriter);
         for(int i = 0;i<Texts.length;i++){    
-        bw.write(Texts[i]);
+        bw.write(Texts[i]+"\n");
         }
         bw.close();  
         

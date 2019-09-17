@@ -32,10 +32,11 @@ public class Read_TXT {
     static int ReadLine;
     static boolean ReadBool;
     
-    public static void Read_TXT_File(File file){
+    public static void Read_TXT_File(File file,int LineIndex){
         
         if(ReadLine == 0){
             TXT_File = file;
+            LineNumbers = LineIndex;
             ReadBool = true;
         }
         
@@ -63,10 +64,11 @@ public class Read_TXT {
         
     }
     
-    public static void Get_TXT_Line_Content(File file,int Line){
+    public static void Get_TXT_Line_Content(File file,int Line,int LineIndex){
         
         if(ReadLine == 0){
             TXT_File = file;
+            LineNumbers = LineIndex;
             ReadBool = true;
         }
         

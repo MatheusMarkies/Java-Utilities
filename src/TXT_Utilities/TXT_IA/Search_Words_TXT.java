@@ -21,7 +21,7 @@ public class Search_Words_TXT {
     
     public static void Search_Words(File file, String Word){
       
-        TXT_Utilities.Read_TXT.Read_TXT_File(file);
+        TXT_Utilities.Read_TXT.Read_TXT_File(file,2);
          for(int i = 0;i < TXT_Utilities.Read_TXT.TXT_Content.size();i++){
              
              LineWords = TXT_Utilities.Read_TXT.TXT_Content.get(i).split(" ");
