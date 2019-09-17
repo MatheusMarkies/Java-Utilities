@@ -9,7 +9,7 @@
 
 - -**IA for handling TXT files with features:**
 
--    ⋅-Search words (Return: Word line (String) and line number (int)).
+-    -Search words (Return: Word line (String) and line number (int)).
 
 -    -Get number of lines from a TXT file (Return: int).
 
