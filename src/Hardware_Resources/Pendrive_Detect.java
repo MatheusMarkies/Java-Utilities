@@ -15,13 +15,13 @@ import java.util.logging.Logger;
  */
 public class Pendrive_Detect extends Thread{
     
-    String Pendrive_Folder;
+    static  String[] letters = new String[]{ "A", "B", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
+    static File[] drives = new File[letters.length];
+    
+    static String Pendrive_Folder;
+    static boolean[] isDrive = new boolean[letters.length];
     
     public void run(){
-
-String[] letters = new String[]{ "A", "B", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
-File[] drives = new File[letters.length];
-boolean[] isDrive = new boolean[letters.length];
 
 
 for ( int i = 0; i < letters.length; ++i )
@@ -63,5 +63,12 @@ for ( int i = 0; i < letters.length; ++i )
 
 
   }
+    
+    public static String Get_Pendrive_Folder(){
+    return Pendrive_Folder;
+    }
+    public static boolean[] Get_pluggedIn(){
+    return isDrive;
+    }
     
 }
