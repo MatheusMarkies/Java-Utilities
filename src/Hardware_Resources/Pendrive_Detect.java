@@ -23,7 +23,6 @@ public class Pendrive_Detect extends Thread{
     
     public void run(){
 
-
 for ( int i = 0; i < letters.length; ++i )
     {
     drives[i] = new File(letters[i]+":/");
@@ -33,7 +32,6 @@ for ( int i = 0; i < letters.length; ++i )
 }
 
  System.out.println("FindDrive: waiting for devices...");
-
 
  while(true)
     {
@@ -54,13 +52,12 @@ for ( int i = 0; i < letters.length; ++i )
             }
         }
 
-    
     try { Thread.sleep(100); }
-    catch (InterruptedException e) { /* do nothing */ }
+    catch (InterruptedException e) { 
+    
+    }
 
-     }
-
-
+  }
 
   }
     
