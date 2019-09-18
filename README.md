@@ -58,7 +58,7 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 }
 ```
 
-**API mode: Future versions only**
+**API mode: https://www.dropbox.com/s/9f6normcwz9jc9s/Java_Utilities.jar?dl=0**
 
 *Current version: 1.4v*
 
