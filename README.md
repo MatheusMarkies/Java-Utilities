@@ -63,11 +63,8 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 ```java
 public class DINO_NeuronSimulation {
 
-    static File file;
-    
-    /**
-     * @param args the command line arguments
-     */
+    static File file = new File("FilePatch\\FileName.txt");
+   
     public static void main(String[] args) {
         
     TXT_Utilities.Create_TXT.Create_TXT_File(file);
