@@ -5,45 +5,32 @@
  */
 package FXML_Utilities;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author Matheus Markies
  */
-public class Start_FXML extends Application {
+public class Switch_Frame_FXML {
     
     static String FXML_Name = "FXML_Login_Frame";//Exemple
     static String FXML_Package = "FXML_Frames";//Exemple
     
-    @Override
-    public void start(Stage primaryStage) {
-      
-        try {
-            
+    static Scene scene;//Your Scene 
+    
+    public void Switch_Scene_Frame(){
+     
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_Package+"/"+FXML_Name+".fxml"));
-
-        AnchorPane root = (AnchorPane) loader.load();
-        Scene scene = new Scene(root);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-        }catch(Exception e){
-            System.err.println(e);
-        }
+        Stage stage = (Stage) scene.getWindow();
+        scene = new Scene(loader.getRoot());
+        stage.setScene(scene);
         
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    
+    public static void Set_Scene(Scene scene_){
+        scene = scene_;
     }
     
 }

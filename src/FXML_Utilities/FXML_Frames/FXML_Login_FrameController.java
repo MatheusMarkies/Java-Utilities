@@ -5,9 +5,13 @@
  */
 package FXML_Utilities.FXML_Frames;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.*;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 
 /**
  * FXML Controller class
@@ -16,12 +20,30 @@ import javafx.fxml.Initializable;
  */
 public class FXML_Login_FrameController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+   static Scene scene;
     
-    }    
+   @FXML
+   private TextField UserField;
+   
+   @FXML
+   private TextField PasswordField;
+   
+   @FXML
+   private Hyperlink RegisterHyperlink;
+   
+   @FXML
+   private Button LoginButton;
+   
+   @FXML
+   @Override
+   public void initialize(URL url, ResourceBundle rb) {
+    
+     //UserField = (TextField) scene.lookup("#UserInput_ID");
+        
+    }
+    
+    public static void Set_Scene(Scene scene_){
+        scene = scene_;
+    }
     
 }
