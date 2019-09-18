@@ -60,6 +60,6 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 
 **API mode: Future versions only**
 
-*Current version: 1.2v*
+*Current version: 1.4v*
 
 **By Matheus Markies**
