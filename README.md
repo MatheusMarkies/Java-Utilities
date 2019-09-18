@@ -60,6 +60,23 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 
 **API mode: https://www.dropbox.com/s/9f6normcwz9jc9s/Java_Utilities.jar?dl=0**
 
+```java
+public class DINO_NeuronSimulation {
+
+    static File file;
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+    TXT_Utilities.Create_TXT.Create_TXT_File(file);
+    
+    }
+    
+}
+```
+
 *Current version: 1.4v*
 
 **By Matheus Markies**
