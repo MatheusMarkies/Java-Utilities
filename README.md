@@ -16,6 +16,11 @@
 
 **-JavaFX Features.**
 
+
+- -**Hardware Resources**
+
+-    -New Device Detector.
+
 ## How to use:
 
 **Copy lines or scripts and add to your project.**
