@@ -17,7 +17,7 @@
 **-JavaFX Features.**
 
 
-- -**Hardware Resources**
+**-Hardware Resources**
 
 -    -New Device Detector.
 
