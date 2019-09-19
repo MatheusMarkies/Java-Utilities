@@ -21,6 +21,8 @@
 
 -    -New Device Detector.
 
+**-Create new encrypted file extensions**
+
 ## How to use:
 
 **Copy lines or scripts and add to your project.**
