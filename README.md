@@ -16,6 +16,13 @@
 
 **-JavaFX Features.**
 
+
+**-Hardware Resources**
+
+-    -New Device Detector.
+
+**-Create new encrypted file extensions**
+
 ## How to use:
 
 **Copy lines or scripts and add to your project.**
@@ -58,8 +65,22 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 }
 ```
 
-**API mode: Future versions only**
+**API mode: https://www.dropbox.com/s/9f6normcwz9jc9s/Java_Utilities.jar?dl=0**
 
-*Current version: 1.2v*
+```java
+public class DINO_NeuronSimulation {
+
+    static File file = new File("FilePatch\\FileName.txt");
+   
+    public static void main(String[] args) {
+        
+    TXT_Utilities.Create_TXT.Create_TXT_File(file);
+    
+    }
+    
+}
+```
+
+*Current version: 1.4v*
 
 **By Matheus Markies**
