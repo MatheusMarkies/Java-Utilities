@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FXML_Utilities;
+package FXMLUtilities;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  *
  * @author Matheus Markies
  */
-public class Switch_Frame_FXML {
+public class SwitchFrameFXML {
     
     static String FXML_Name = "FXML_Login_Frame";//Exemple
     static String FXML_Package = "FXML_Frames";//Exemple

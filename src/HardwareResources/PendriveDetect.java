@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Hardware_Resources;
+package HardwareResources;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Matheus Markies
  */
-public class Pendrive_Detect extends Thread{
+public class PendriveDetect extends Thread{
     
     static  String[] letters = new String[]{ "A", "B", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
     static File[] drives = new File[letters.length];

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FXML_Utilities;
+package FXMLUtilities;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +17,24 @@ import javafx.stage.StageStyle;
  *
  * @author Matheus Markies
  */
-public class Open_Another_FXML_Frame {
+public class OpenAnotherFXMLFrame extends Thread{
     
    static String FXML_Name = "FXML_Login_Frame";//Exemple
    static String FXML_Package = "FXML_Frames";//Exemple
     
-   FXMLLoader loader;
+   static FXMLLoader loader;
     
+   //public void Open_Another_FXML_Frame(){
+    //   Open_Another_FXML();
+   //}
+
+    @Override
+    public void run() {
+     Open_Another_FXML();   
+    }
+   
+   
+   
    public void Open_Another_FXML() {
     
     try {
@@ -39,5 +50,11 @@ public class Open_Another_FXML_Frame {
        
    }
   
+    public static void Set__Another_FXML_Name(String name){
+    FXML_Name = name;
+    }
+    public static void Set_Another_FXML_Package(String pack){
+    FXML_Package = pack;
+    }
     
 }

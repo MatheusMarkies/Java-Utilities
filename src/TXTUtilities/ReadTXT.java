@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TXT_Utilities;
+package TXTUtilities;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Matheus Markies
  */
-public class Read_TXT {
+public class ReadTXT {
     
     static File TXT_File = new File("FilePatch\\FileName.txt");
     static FileReader Read_txt;
@@ -52,7 +51,7 @@ public class Read_TXT {
             ReadLine += 1;
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Read_TXT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReadTXT.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if(ReadLine == LineNumbers){
@@ -88,7 +87,7 @@ public class Read_TXT {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Read_TXT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReadTXT.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
         

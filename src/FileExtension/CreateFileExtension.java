@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package File_Extension;
+package FileExtension;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author Matheus Markies
  */
-public class Create_File_Extension {
+public class CreateFileExtension {
     
    //static String File_Extension = ".rer";//exemple
    static String Cryptography;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TXT_Utilities;
+package TXTUtilities;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,9 +13,9 @@ import java.io.IOException;
  *
  * @author Matheus Markies
  */
-public class Create_TXT {
+public class CreateTXT {
     
-    public static void Create_TXT_File(File file){
+    public static void CreateTXTFile(File file){
         
         File TXT_File = new File("FilePatch\\FileName.txt");
         

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TXT_Utilities;
+package TXTUtilities;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,7 +14,7 @@ import java.io.IOException;
  *
  * @author Matheus Markies
  */
-public class Write_TXT {
+public class WriteTXT {
     
     public static void Write_TXT_File (File file,String Text) throws IOException{
         

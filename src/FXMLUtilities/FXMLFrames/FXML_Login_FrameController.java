@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FXML_Utilities.FXML_Frames;
+package FXMLUtilities.FXMLFrames;
 
 import java.awt.*;
 import java.net.URL;
