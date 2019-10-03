@@ -31,7 +31,7 @@ public class ReadTXT {
     static int ReadLine;
     static boolean ReadBool;
     
-    public static void Read_TXT_File(File file,int LineIndex){
+    public static ArrayList<String> Read_TXT_File(File file,int LineIndex){
         
         if(ReadLine == 0){
             TXT_File = file;
@@ -60,7 +60,7 @@ public class ReadTXT {
             ReadBool = false;
         }
         }
-        
+        return TXT_Content;
     }
     
     public static void Get_TXT_Line_Content(File file,int Line,int LineIndex){

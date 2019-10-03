@@ -24,7 +24,7 @@ public class GetTXTLineIndex {
     static Scanner Reader;
     static FileReader Read_txt;
     
-    public static void Get_TXT_File_LineIndex(File file) throws FileNotFoundException{
+    public static int Get_TXT_File_LineIndex(File file) throws FileNotFoundException{
         
         Read_txt = new FileReader(file);
         Reader  = new Scanner(file);
@@ -49,7 +49,7 @@ public class GetTXTLineIndex {
                 Logger.getLogger(GetTXTLineIndex.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-            
+          return LineIndex;
     }
     public static int Get_Line_Index(){
      return LineIndex;
