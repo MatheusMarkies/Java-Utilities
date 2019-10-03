@@ -76,19 +76,19 @@ public class DINO_NeuronSimulation {
         
         File File = = new File("FilePatch\\FileName.txt");
         
-        int index = TXTUtilities.TXTIA.GetTXTLineIndex.Get_TXT_File_LineIndex(File);//pegar numero de linhas do txt
+        int index = TXTUtilities.TXTIA.GetTXTLineIndex.Get_TXT_File_LineIndex(File);
         
-        ArrayList<String> content = TXTUtilities.ReadTXT.Read_TXT_File(File, index);//File = txt que vc quer ler | index = numero de linhas
+        ArrayList<String> content = TXTUtilities.ReadTXT.Read_TXT_File(File, index);
         
         String[] Content_Array = new String[content.size()];
         
         TXTUtilities.CreateTXT.CreateTXTFile(file);
         
         for(int i = 0;i<content.size();i++){
-        Content_Array[i] = content.get(i);//Converter List para Array
+        Content_Array[i] = content.get(i);//Convert array to list
         }
         
-        TXTUtilities.WriteTXT.Write_Array_TXT_File(file, Content_Array);//
+        TXTUtilities.WriteTXT.Write_Array_TXT_File(file, Content_Array);
     
     }
     
