@@ -70,11 +70,11 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 ```java
 public class DINO_NeuronSimulation {
 
-    static File file = new File("FilePatch\\FileName.txt");
+    static File file = new File("FilePath\\FileName.txt");
    
     public static void main(String[] args) {
         
-        File File = = new File("FilePatch\\FileName.txt");
+        File File = = new File("FilePath\\FileName.txt");
         
         int index = TXTUtilities.TXTIA.GetTXTLineIndex.Get_TXT_File_LineIndex(File);
         
