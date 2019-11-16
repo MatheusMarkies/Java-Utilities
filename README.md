@@ -65,16 +65,30 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 }
 ```
 
-**API mode: https://www.dropbox.com/s/9f6normcwz9jc9s/Java_Utilities.jar?dl=0**
+**API mode: https://www.dropbox.com/s/kxuon3mivxsc2it/Java_Utilities1.4v.jar?dl=0**
 
 ```java
 public class DINO_NeuronSimulation {
 
-    static File file = new File("FilePatch\\FileName.txt");
+    static File file = new File("FilePath\\FileName.txt");
    
     public static void main(String[] args) {
         
-    TXT_Utilities.Create_TXT.Create_TXT_File(file);
+        File File = = new File("FilePath\\FileName.txt");
+        
+        int index = TXTUtilities.TXTIA.GetTXTLineIndex.Get_TXT_File_LineIndex(File);
+        
+        ArrayList<String> content = TXTUtilities.ReadTXT.Read_TXT_File(File, index);
+        
+        String[] Content_Array = new String[content.size()];
+        
+        TXTUtilities.CreateTXT.CreateTXTFile(file);
+        
+        for(int i = 0;i<content.size();i++){
+        Content_Array[i] = content.get(i);//Convert array to list
+        }
+        
+        TXTUtilities.WriteTXT.Write_Array_TXT_File(file, Content_Array);
     
     }
     
