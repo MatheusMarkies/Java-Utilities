@@ -24,7 +24,7 @@ public class GetTXTLineIndex {
     static Scanner Reader;
     static FileReader Read_txt;
     
-    public static int Get_TXT_File_LineIndex(File file) throws FileNotFoundException{
+    public static int getTXTFileLineIndex(File file) throws FileNotFoundException{
         
         Read_txt = new FileReader(file);
         Reader  = new Scanner(file);
@@ -37,10 +37,9 @@ public class GetTXTLineIndex {
             LineContent = Reader.nextLine();
             LineIndex++;
             }catch(Exception e){
-                
-                System.out.println("Line Number: "+LineIndex);
+                //System.out.println("Line Number: "+LineIndex);
+                Reader.close();
                 break;
-                
             }
             
             try {

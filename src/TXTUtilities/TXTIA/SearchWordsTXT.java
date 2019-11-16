@@ -21,20 +21,20 @@ public class SearchWordsTXT {
     
     public static void Search_Words(File file, String Word){
       
-        TXTUtilities.ReadTXT.Read_TXT_File(file,2);
-         for(int i = 0;i < TXTUtilities.ReadTXT.TXT_Content.size();i++){
+        //TXTUtilities.ReadTXT.Read_TXT_File(file,2);
+        //for(int i = 0;i < TXTUtilities.ReadTXT.TXT_Content.size();i++){
              
-             LineWords = TXTUtilities.ReadTXT.TXT_Content.get(i).split(" ");
-             for(int e = 0;e<LineWords.length;e++){
-                 if(LineWords[e] == Word){
+            // LineWords = TXTUtilities.ReadTXT.TXT_Content.get(i).split(" ");//
+            // for(int e = 0;e<LineWords.length;e++){
+               //  if(LineWords[e] == Word){
                      
-                     Word_Line.add(TXTUtilities.ReadTXT.TXT_Content.get(i));
-                     Word_Index.add(i);
+                 //    Word_Line.add(TXTUtilities.ReadTXT.TXT_Content.get(i));
+                  //   Word_Index.add(i);
                      
-                 }
-             }
+                // }
+            // }
              
-         }
+         //}
         
     }
     

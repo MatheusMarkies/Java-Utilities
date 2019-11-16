@@ -19,51 +19,33 @@ import java.util.logging.Logger;
  */
 public class ReadTXT {
     
-    static File TXT_File = new File("FilePatch\\FileName.txt");
+    static File TXT_File = new File("FilePath\\FileName.txt");
     static FileReader Read_txt;
     
     public static String LineContent;
-    public static ArrayList<String> TXT_Content = new ArrayList<String>();
-    
-    static Scanner Reader;
+    //public static ArrayList<String> TXT_Content = new ArrayList<String>();
     
     static int LineNumbers;
     static int ReadLine;
     static boolean ReadBool;
     
-    public static ArrayList<String> Read_TXT_File(File file,int LineIndex){
+    public static ArrayList<String> readTXTFile(File file) throws FileNotFoundException{
         
-        if(ReadLine == 0){
-            TXT_File = file;
-            LineNumbers = LineIndex;
-            ReadBool = true;
+       ArrayList<String> TXT_Content = new ArrayList<String>();
+   
+       Scanner Reader = new Scanner(file);
+       
+        while (Reader.hasNext()) {
+            String next = Reader.next();
+            TXT_Content.add(next);
         }
-        
-        while (ReadBool) {            
-        try {
-            Read_txt = new FileReader(TXT_File);
-            Reader  = new Scanner(TXT_File);
-            
-            LineContent = Reader.nextLine();
-            
-            TXT_Content.add(LineContent);
-            
-            ReadLine += 1;
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ReadTXT.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if(ReadLine == LineNumbers){
-            Reader.close();
-            ReadLine = 0;
-            ReadBool = false;
-        }
-        }
+   
         return TXT_Content;
     }
     
-    public static void Get_TXT_Line_Content(File file,int Line,int LineIndex){
+    public static String getTXTLineContent(File file,int Line,int LineIndex){
+        
+        Scanner Reader = null;
         
         if(ReadLine == 0){
             TXT_File = file;
@@ -90,7 +72,7 @@ public class ReadTXT {
             Logger.getLogger(ReadTXT.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+    return LineContent;
   }
     
 }

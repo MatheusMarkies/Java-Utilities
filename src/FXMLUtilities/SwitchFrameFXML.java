@@ -20,17 +20,21 @@ public class SwitchFrameFXML {
     
     static Scene scene;//Your Scene 
     
-    public void Switch_Scene_Frame(){
+    public void Switch_Scene_Frame(String FXMLName,String FXMLPatch){
      
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_Package+"/"+FXML_Name+".fxml"));
+        //scene = scene_;
+        FXML_Package = FXMLPatch;
+        FXML_Name = FXMLName;
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_Package+"/"+FXML_Name));
         Stage stage = (Stage) scene.getWindow();
         scene = new Scene(loader.getRoot());
         stage.setScene(scene);
         
     }
     
-    public static void Set_Scene(Scene scene_){
-        scene = scene_;
-    }
+    //public static void Set_Scene(Scene scene_){
+    //    scene = scene_;
+    //}
     
 }
