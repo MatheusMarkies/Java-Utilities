@@ -46,7 +46,9 @@ public class ImagePattern {
     for(int t =0;t<io.size();t++)
     FramesMainColor.add(getImageMainColor(io.get(t)));
 
-    String result = ImageReconizer.getImageQuadrantWithTolerance(FramesMainColor, mainColor, 50);
+    System.out.println("Recognizer...");
+    
+    String result = ImageRecognizer.getImageQuadrantWithTolerance(FramesMainColor, mainColor, 20,true,false,false,false);
     System.out.println(result);
     
     }
@@ -190,7 +192,7 @@ public class ImagePattern {
         return newArray;
     }
 
-    static class imageTreatment extends ImagePattern{
+   static class imageTreatment extends ImagePattern{
     
         static ArrayList<BufferedImage> frameAnallyzer(Color mainColor,BufferedImage in) throws AWTException, IOException{
             
@@ -280,11 +282,6 @@ public class ImagePattern {
                            
                        Color color = new Color(bigImage.getRGB(x, y));
                        //System.out.println(color);
-                       System.out.println("xcord "+xcord);
-                       System.out.println("ycord "+ycord);
-                       System.out.println("X "+x);
-                       System.out.println("Y "+y);
-                       System.out.println("");
                        bImg.setRGB(xcord, ycord, bigImage.getRGB(x, y));//Gravar nova imagem
                        
                    }
@@ -318,11 +315,29 @@ public class ImagePattern {
   
   }
     
-   static class ImageReconizer extends ImagePattern{
+   static class ImageRecognizer extends ImagePattern{
     
-   static String getImageQuadrantWithTolerance(ArrayList<Color> framesColors,Color mainColor,int Tolerance){
+   static String getImageQuadrantWithTolerance(ArrayList<Color> framesColors,Color mainColor,int Tolerance,boolean redActive,boolean greenActive,boolean blueActive,boolean SmartTolerance){
     
-       String result = null;
+       if(SmartTolerance){
+           
+           if(mainColor.getRed() == 0)
+           redActive = false;
+           else
+           redActive = true;
+           if(mainColor.getGreen()== 0)
+           greenActive = false;
+           else
+           greenActive = true;
+           if(mainColor.getBlue()== 0)
+           blueActive = false;
+           else
+           blueActive = true;
+             
+       }
+       
+           
+       String result = "Image: ";
        
        int R = 0;
        int G = 0;
@@ -331,7 +346,7 @@ public class ImagePattern {
        
        for(int u=0;u<3;u++){
            
-           if(u == 0){
+           if(u == 0&&redActive){
            
            int tolerance = (mainColor.getRed() * 255) / 100;
            int lenght = tolerance * 2; 
@@ -356,7 +371,7 @@ public class ImagePattern {
            }
            
            }
-           if(u == 1){
+           if(u == 1&&greenActive){
            
            int toleranceG = (mainColor.getGreen()* 255) / 100;
            int lenghtG = toleranceG * 2; 
@@ -381,7 +396,7 @@ public class ImagePattern {
            }
                
            }
-           if(u == 2){
+           if(u == 2&&blueActive){
                
            int toleranceB = (mainColor.getBlue()* 255) / 100;
            int lenghtB = toleranceB * 2; 
