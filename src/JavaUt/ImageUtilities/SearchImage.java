@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ImageUtilities;
+package JavaUt.ImageUtilities;
 
 import java.awt.AWTException;
 import java.awt.Color;
@@ -11,7 +11,10 @@ import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -58,6 +61,21 @@ public class SearchImage {
     
     static int LengthX;
     static int LengthY;
+    
+    public static void main(String[] args) throws FileNotFoundException, AWTException {
+        
+    //JavaUt.FileExtension.CreateFileExtension.Create_Extension(Content, file, name, eXX);
+ 
+    InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\il_570xN.1649501246_g4qj.png"));
+    JavaUt.ImageUtilities.SearchImage.ImageFinder_NotUse_InBuilder(is);
+    
+    //FXML_Utilities.Start_FXML rc = new FXML_Utilities.Start_FXML();
+    //Thread t = new Thread(rc);
+    //t.start();
+    
+        //ola();
+        
+    }
     
     public static void ImageFinder_NotUse_InBuilder(InputStream ImageBase) throws AWTException {
         
@@ -119,11 +137,9 @@ public class SearchImage {
                         //isPixel = true;
                         //break;
                       //}
-                      
-                   ImageComparador rc = new ImageComparador();
-                   Thread t = new Thread(rc);
-                   t.start();
 
+                   ImageComparator();
+                      
                    if(isPixel){
                        
                    //System.out.println("IsPixel");
@@ -223,8 +239,8 @@ public class SearchImage {
              break;
              }
 
-               System.out.println("Line: "+e+" Result: "+ArrayListF.size());
-              }
+           System.out.println("Line: "+e+" Result: "+ArrayListF.size());
+           }
                           
               System.out.println("Final "+ArrayListF.size());
               
@@ -287,7 +303,67 @@ public class SearchImage {
     ArrayStartPixelHeightMax.add(LengthY);
         
     }
+
+    static boolean IgnoreExtremes = true;
     
+      static void ImageComparator(){
+              int Red = 0;
+                      int Green = 0;
+                      int Blue = 0;
+        for(int Length = 0;Length< ArrayImageBase.size();Length++){
+                          for(int u = 0;u < 3;u++){
+                          if(u == 0){
+                          prop = (int) (ArrayImageBase.get(Length).getRed() * tolerance)/100;//procentegem de tolerancia de cor (x% de 255)
+                           int f = 255-prop;
+                           for(int h=0;h<f;h++){
+                             if(ArrayImageBase.get(Length).getBlue() == cA.getBlue()){
+                              Red ++;
+                              break;
+                             }
+                           }
+                          }
+                          if(u == 1){
+                          prop = (int) (ArrayImageBase.get(Length).getGreen()* tolerance)/100;//procentegem de tolerancia de cor (x% de 255)
+                          int f = 255-prop;
+                           for(int h=0;h<f;h++){
+                             if(ArrayImageBase.get(Length).getGreen() == cA.getGreen()){
+                              Green ++;
+                              break;
+                             }
+                           }
+                          }
+                          if(u == 2){
+                          prop = (int) (ArrayImageBase.get(Length).getBlue() * tolerance)/100;//procentegem de tolerancia de cor (x% de 255)
+                          int f = 255-prop;
+                           for(int h=0;h<f;h++){
+                             if(ArrayImageBase.get(Length).getBlue() == cA.getBlue()){
+                              Blue ++;
+                              break;
+                             }
+                           }
+                          }
+                      }
+                          
+                      if(IgnoreExtremes){
+                        if(cA.getRed() == 255 && cA.getGreen()== 255 && cA.getBlue() == 255 || cA.getRed() == 0 && cA.getGreen() == 0 && cA.getBlue() == 0){
+                        break;
+                        }
+                      }else{
+                        if(Red > 0 && Green > 0 && Blue>0){
+                         //System.out.println("ArrayInd "+ ArrayImageBase.get(Length).getRed() +" "+ArrayImageBase.get(Length).getGreen()+" "+ArrayImageBase.get(Length).getBlue());
+                         //System.out.println("CA "+ cA.getRed() +" "+cA.getGreen()+" "+cA.getBlue());
+                         isPixel = true;
+                         break;
+                        }
+                      }
+                      
+                      
+                      }
+    }
+    
+    
+    
+
 
 
     

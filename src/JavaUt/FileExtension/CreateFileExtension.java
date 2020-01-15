@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FileExtension;
+package JavaUt.FileExtension;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,21 +27,21 @@ public class CreateFileExtension {
    
    static String Encryption_Key;
    
-   public static void Create_Extension(String[] Content,File filePatch,String FileName,String File_Extension){
+   public static void createExtension(String[] Content,File filePatch,String FileName,String File_Extension){
        
         File file_Extension = new File(filePatch.getAbsolutePath()+"\\"+FileName+File_Extension);
         
             try {
             file_Extension.createNewFile();
             //Set_Extension_Cryptography(Cryptography,file_Extension);
-            Set_Extension_Cryptography(file_Extension,Content);
+            setExtensionCryptography(file_Extension,Content);
             
             } catch (IOException ex) {
                  System.err.println(ex);
             }
    }
    
-   static void Set_Extension_Cryptography(File file,String[] Content) throws FileNotFoundException{
+   static void setExtensionCryptography(File file,String[] Content) throws FileNotFoundException{
    
    //Crip Vars
    String[] Letters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," "};
@@ -121,7 +121,7 @@ public class CreateFileExtension {
         
    }
    
-   public static String Get_Encryption_Key(){
+   public static String getEncryptionKey(){
    return Encryption_Key;
    }
     

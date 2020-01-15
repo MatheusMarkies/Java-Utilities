@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package HardwareResources;
+package JavaUt.HardwareResources;
 
 import java.io.File;
 import java.util.logging.Level;
