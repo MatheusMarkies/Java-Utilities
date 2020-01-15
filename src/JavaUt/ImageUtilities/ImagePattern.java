@@ -32,7 +32,7 @@ public class ImagePattern {
     
     public static void main(String[] args) throws FileNotFoundException, AWTException, IOException {
  
-    InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\tt.png"));
+    InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\il_570xN.1649501246_g4qj.png"));
     BufferedImage bufi = ImageIO.read(is);
     
     Color mainColor = getImageMainColor(bufi);
@@ -213,7 +213,7 @@ public class ImagePattern {
                         //System.out.println(color);
                     }
                 }
-                //ImageIO.write(imagesToAnalizer.get(n), "png", file);
+                ImageIO.write(imagesToAnalizer.get(n), "png", file);
             }
             
             return newArray;
@@ -232,53 +232,64 @@ public class ImagePattern {
              float sizeFactorU = bigImage.getWidth()/smallImage.getWidth();
              float sizeFactorV = bigImage.getHeight()/smallImage.getHeight();
              
-             int Y = 0;
-             int X = 0;
+             int M = 0;
+             int N = 0;
              
              int MinX = 0;
              int MinY = 0;
+             int MaxX = 0;
+             int MaxY = 0;
              
              int images = (int)sizeFactorU * (int)sizeFactorV;
              
              for(int i = 0;i<images;i++){
              BufferedImage bImg = new BufferedImage(smallImage.getWidth(),smallImage.getHeight(),BufferedImage.TYPE_INT_BGR);
+             
+             MinX = smallImage.getWidth() * M;
+             MaxX = smallImage.getWidth() * (M + 1);
+             
+             MinY = smallImage.getHeight()* N;
+             MaxY = smallImage.getHeight() * (N + 1);
+             
              for(int y =0;y<bigImage.getHeight();y++){
+               for(int x = 0;x<bigImage.getWidth();x++){
+                 
+                   if(y >= MinY && y <= MaxY)
+                   if(x >= MinX && x <= MaxX){
+                       
+                       int xcord = 0;
+                       int ycord = 0;
+                       
+                       if(MaxX > smallImage.getWidth())
+                       xcord = x - smallImage.getWidth();
+                       else if(MaxX <= smallImage.getWidth())
+                       xcord = x;
+                       
+                       if(MaxY > smallImage.getHeight())
+                       ycord = y - smallImage.getHeight();
+                       else if(MaxY <= smallImage.getHeight())
+                       ycord = y;
+                         
+                       Color color = new Color(bigImage.getRGB(x, y));
+                       System.out.println(color);
+                       bImg.setRGB(xcord, ycord, bigImage.getRGB(x, y));
+                       
+                   }
+                   
+                       
+               }
+          
+             }
              
-             for(int x = 0;x<bigImage.getWidth();x++){
- 
-             if(x < MinX && y < MinY){
-             int Xcord = 0;
-             int Ycord = 0;
-             if(x < smallImage.getWidth())
-             Xcord = x;   
+             if(M < (int)sizeFactorU)
+             M++;
              else{
-             Xcord = x-smallImage.getWidth()*X;
+             M = 0;
+             N++;
              }
-             if(y < smallImage.getHeight()){
-             Ycord = y;   
-             }else{
-             Ycord = y-smallImage.getHeight()*Y;
-             }
-             //System.out.println(bigImage.getRGB(x, y));
-             bImg.setRGB(Xcord, Ycord, bigImage.getRGB(x, y));
-             }//if
-             }//For X
-             
-             }//For Y
-             
-             if(Y < (int)sizeFactorV){
-             Y+=1;
-             MinY = (int)sizeFactorU * Y;           
-             }
-             if(X < (int)sizeFactorU){
-             X+=1;
-             System.out.println("Scale: "+(int)sizeFactorU);
-             MinX = (int)sizeFactorU * X;
-             }
-             System.out.println("Min: "+MinX);
              
              bs.add(bImg);
-             }//For Images
+             }
              
         return bs;
         }
