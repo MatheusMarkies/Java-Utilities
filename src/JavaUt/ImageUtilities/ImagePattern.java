@@ -39,8 +39,16 @@ public class ImagePattern {
     
     System.out.println("Main Color: "+mainColor);
         
-    ArrayList<BufferedImage> io = Reconizer.frameAnallyzer(mainColor, bufi);
-        
+    ArrayList<BufferedImage> io = imageTreatment.frameAnallyzer(mainColor, bufi);
+      
+    ArrayList<Color> FramesMainColor = new ArrayList<>();
+    
+    for(int t =0;t<io.size();t++)
+    FramesMainColor.add(getImageMainColor(io.get(t)));
+
+    String result = ImageReconizer.getImageQuadrantWithTolerance(FramesMainColor, mainColor, 50);
+    System.out.println(result);
+    
     }
         
     public static Color getImageMainColor(BufferedImage ImageBase_) throws IOException{
@@ -91,22 +99,17 @@ public class ImagePattern {
               
           if(ListColors.get(c).getAlpha() == 0){
           ListColors.remove(c);
-          System.out.println("Removed");
           }
           if(ListColors.get(c).getBlue() == 255&&ListColors.get(c).getGreen() == 255&&ListColors.get(c).getRed() == 255){
           ListColors.remove(c);
-          System.out.println("Removed");
           }
           if(ListColors.get(c).getBlue() == 0&&ListColors.get(c).getGreen() == 0&&ListColors.get(c).getRed() == 0){
           ListColors.remove(c);
-          System.out.println("Removed");
           }
 
          }
 
           for(int c =0;c<ListColors.size();c++){
-              
-          System.out.println("Color: "+ListColors.get(c));
               
           if(ListColors.get(c).getAlpha() == 0){
           Check = true;
@@ -128,7 +131,6 @@ public class ImagePattern {
     }
           
     newArray = ListColors;
-    System.out.println("New: "+ListColors.size());
         System.out.println(ListColors);
     return newArray;
     }
@@ -188,7 +190,7 @@ public class ImagePattern {
         return newArray;
     }
 
-    static class Reconizer extends ImagePattern{
+    static class imageTreatment extends ImagePattern{
     
         static ArrayList<BufferedImage> frameAnallyzer(Color mainColor,BufferedImage in) throws AWTException, IOException{
             
@@ -215,7 +217,7 @@ public class ImagePattern {
                 }
                 ImageIO.write(imagesToAnalizer.get(n), "png", file);
             }
-            
+            newArray = imagesToAnalizer;
             return newArray;
         }
         
@@ -229,50 +231,61 @@ public class ImagePattern {
             //else
             //smallImage = resizeImage(SmallImage, 570, 532);
             
-             float sizeFactorU = bigImage.getWidth()/smallImage.getWidth();
-             float sizeFactorV = bigImage.getHeight()/smallImage.getHeight();
+             float sizeFactorU = bigImage.getWidth()/smallImage.getWidth();//Pegar numera maximo de imagens na largura da imagem grande
+             float sizeFactorV = bigImage.getHeight()/smallImage.getHeight();//Pegar numera maximo de imagens na altura da imagem grande
              
-             int M = 0;
-             int N = 0;
+             int M = 0;//Multiplicador de Largura
+             int N = 0;//Multiplicador de Altura
              
-             int MinX = 0;
-             int MinY = 0;
-             int MaxX = 0;
-             int MaxY = 0;
+             int MinX = 0;//Largura minima para gravacao
+             int MinY = 0;//Altura minima para gravacao
+             int MaxX = 0;//Largura Maxima para gravacao
+             int MaxY = 0;//Altura Maxima para gravacao
              
-             int images = (int)sizeFactorU * (int)sizeFactorV;
+             int images = (int)sizeFactorU * (int)sizeFactorV;//Numero de imagens pequenas
              
              for(int i = 0;i<images;i++){
-             BufferedImage bImg = new BufferedImage(smallImage.getWidth(),smallImage.getHeight(),BufferedImage.TYPE_INT_BGR);
+             BufferedImage bImg = new BufferedImage(smallImage.getWidth()+1,smallImage.getHeight()+1,BufferedImage.TYPE_INT_BGR);
              
              MinX = smallImage.getWidth() * M;
-             MaxX = smallImage.getWidth() * (M + 1);
+             MaxX = (smallImage.getWidth() * (M + 1)) - 1;
              
              MinY = smallImage.getHeight()* N;
-             MaxY = smallImage.getHeight() * (N + 1);
+             MaxY = (smallImage.getHeight() * (N + 1)) - 1;
              
              for(int y =0;y<bigImage.getHeight();y++){
                for(int x = 0;x<bigImage.getWidth();x++){
                  
-                   if(y >= MinY && y <= MaxY)
-                   if(x >= MinX && x <= MaxX){
+                   if(y >= MinY && y <= MaxY) //Se y for maior ou igual a "Altura minima para gravacao"  e y for menor ou igual "Altura maxima para gravacao"
+                   if(x >= MinX && x <= MaxX){ //Se x for maior ou igual a "Largura minima para gravacao"  e x for menor ou igual "Largura maxima para gravacao"
                        
                        int xcord = 0;
                        int ycord = 0;
                        
-                       if(MaxX > smallImage.getWidth())
+                       if(MinX >= smallImage.getWidth())
                        xcord = x - smallImage.getWidth();
-                       else if(MaxX <= smallImage.getWidth())
+                       else if(MinX <= smallImage.getWidth())
                        xcord = x;
                        
-                       if(MaxY > smallImage.getHeight())
+                       if(MinY >= smallImage.getHeight())
                        ycord = y - smallImage.getHeight();
-                       else if(MaxY <= smallImage.getHeight())
+                       else if(MinY <= smallImage.getHeight())
                        ycord = y;
-                         
+                       
+                       if(ycord >= smallImage.getHeight())
+                       ycord = smallImage.getHeight() - 1;
+                       
+                       if(xcord >= smallImage.getWidth())
+                       xcord = smallImage.getWidth() - 1;
+                           
                        Color color = new Color(bigImage.getRGB(x, y));
-                       System.out.println(color);
-                       bImg.setRGB(xcord, ycord, bigImage.getRGB(x, y));
+                       //System.out.println(color);
+                       System.out.println("xcord "+xcord);
+                       System.out.println("ycord "+ycord);
+                       System.out.println("X "+x);
+                       System.out.println("Y "+y);
+                       System.out.println("");
+                       bImg.setRGB(xcord, ycord, bigImage.getRGB(x, y));//Gravar nova imagem
                        
                    }
                    
@@ -304,5 +317,106 @@ public class ImagePattern {
     }
   
   }
+    
+   static class ImageReconizer extends ImagePattern{
+    
+   static String getImageQuadrantWithTolerance(ArrayList<Color> framesColors,Color mainColor,int Tolerance){
+    
+       String result = null;
+       
+       int R = 0;
+       int G = 0;
+       int B = 0;
+       ArrayList<String> resultQuad = new ArrayList<String>();
+       
+       for(int u=0;u<3;u++){
+           
+           if(u == 0){
+           
+           int tolerance = (mainColor.getRed() * 255) / 100;
+           int lenght = tolerance * 2; 
+           
+           for(int y = 0;y<lenght;y++){
+               
+           int red = (mainColor.getRed()-tolerance)+y;
+           if(red < 0)
+           red = 0;
+           
+           if(R == 0){
+           for(int r = 0;r<framesColors.size();r++){
+               if(framesColors.get(r).getRed() == red){
+               R++;
+               resultQuad.add(r+"");
+               break;    
+               }
+           }
+           }else
+           break;
+           
+           }
+           
+           }
+           if(u == 1){
+           
+           int toleranceG = (mainColor.getGreen()* 255) / 100;
+           int lenghtG = toleranceG * 2; 
+           
+           for(int y = 0;y<lenghtG;y++){
+               
+           int green = (mainColor.getRed()-toleranceG)+y;
+           if(green < 0)
+           green = 0;
+           
+           if(G == 0){
+           for(int r = 0;r<framesColors.size();r++){
+               if(framesColors.get(r).getRed() == green){
+               G++;
+               resultQuad.add(r+"");
+               break;    
+               }
+           }
+           }else
+           break;
+           
+           }
+               
+           }
+           if(u == 2){
+               
+           int toleranceB = (mainColor.getBlue()* 255) / 100;
+           int lenghtB = toleranceB * 2; 
+           
+           for(int y = 0;y<lenghtB;y++){
+               
+           int blue = (mainColor.getRed()-toleranceB)+y;
+           if(blue < 0)
+           blue = 0;
+           
+           if(B == 0){
+           for(int r = 0;r<framesColors.size();r++){
+               if(framesColors.get(r).getRed() == blue){
+               B++;
+               resultQuad.add(r+"");
+               break;    
+               }
+           }
+           }else
+           break;
+           
+           }
+               
+           }
+               
+       }
+ 
+       if(R != 0 || B != 0 || G != 0)
+       for(String s : resultQuad){
+       result = result + s+" "+framesColors.get(Integer.parseInt(s));
+       }
+           
+       return result;
+   }
+      
+   }
     
 }
