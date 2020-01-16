@@ -109,6 +109,6 @@ public class DINO_NeuronSimulation {
 }
 ```
 
-*Current version: 1.4v*
+*Current version: 1.6v*
 
 **By Matheus Markies**
