@@ -39,7 +39,7 @@ public class ImagePattern {
 
         System.out.println("Main Color: " + mainColor);
 
-        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor, false);
+        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor);
 
         BufferedImage bImg = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
         for (PatternPixelSet pps : pattern) {
@@ -470,7 +470,7 @@ public class ImagePattern {
 
     static class imagePatternCreate extends ImagePattern {
 
-    public static ArrayList<PatternPixelSet> createImageBorderPattern(BufferedImage imageBase, Color mainColor, boolean WithMainColor) {
+    public static ArrayList<PatternPixelSet> createImageBorderPattern(BufferedImage imageBase, Color mainColor) {
 
             ArrayList<PatternPixelSet> pattern = new ArrayList<>();
 
@@ -480,12 +480,6 @@ public class ImagePattern {
             for (int h = 0; h < V; h++) {
              boolean CreateStartPx = false;
                 for (int w = 0; w < U; w++) {
-
-                    
-
-                    if (WithMainColor) {
-
-                    } else {
 
                         Color color = new Color(imageBase.getRGB(w, h));
 
@@ -551,7 +545,7 @@ public class ImagePattern {
                     }
 
                 }
-            }
+            
 
             return pattern;
         }
