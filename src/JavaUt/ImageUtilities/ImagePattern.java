@@ -32,7 +32,7 @@ public class ImagePattern {
 
     public static void main(String[] args) throws FileNotFoundException, AWTException, IOException {
 
-        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\OliverCat.png"));
+        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\il_570xN.1649501246_g4qj.png"));
         BufferedImage bufi = ImageIO.read(is);
 
         Color mainColor = getImageMainColor(bufi);
@@ -236,7 +236,7 @@ public class ImagePattern {
                         //System.out.println(color);
                     }
                 }
-                //ImageIO.write(imagesToAnalizer.get(n), "png", file);
+                ImageIO.write(imagesToAnalizer.get(n), "png", file);
             }
             newArray = imagesToAnalizer;
             return newArray;
@@ -552,4 +552,20 @@ public class ImagePattern {
 
     }
 
+    static class patternAnalizer extends ImagePattern{
+        
+        enum Format{
+        Square, Circle, Triangle, NonEuclideanTriangle, None
+        }
+        
+        public static Format getPatternFormat(ArrayList<PatternPixelSet> pps){
+         Format form = null;
+            
+         
+         
+        return form;
+        }
+        
+    }
+    
 }
