@@ -66,35 +66,49 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 ```
 
 **API mode: https://www.dropbox.com/s/kxuon3mivxsc2it/Java_Utilities1.4v.jar?dl=0**
+ImageUtilities -->
 
 ```java
 public class DINO_NeuronSimulation {
-
-    static File file = new File("FilePath\\FileName.txt");
    
     public static void main(String[] args) {
         
-        File File = = new File("FilePath\\FileName.txt");
-        
-        int index = TXTUtilities.TXTIA.GetTXTLineIndex.Get_TXT_File_LineIndex(File);
-        
-        ArrayList<String> content = TXTUtilities.ReadTXT.Read_TXT_File(File, index);
-        
-        String[] Content_Array = new String[content.size()];
-        
-        TXTUtilities.CreateTXT.CreateTXTFile(file);
-        
-        for(int i = 0;i<content.size();i++){
-        Content_Array[i] = content.get(i);//Convert array to list
+               InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\il_570xN.1649501246_g4qj.png"));
+               
+        BufferedImage bufi = ImageIO.read(is);
+
+        Color mainColor = getImageMainColor(bufi);
+
+        System.out.println("Main Color: " + mainColor);
+
+        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor);
+
+        BufferedImage bImg = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
+        for (PatternPixelSet pps : pattern) {
+
+            System.out.println(pps.getType() + " | line: " + pps.getLine() + " Color: " + pps.getColor());
+           bImg.setRGB(pps.getPixelWidth(), pps.getPixelHeight(), pps.getColor().getRGB());
         }
-        
-        TXTUtilities.WriteTXT.Write_Array_TXT_File(file, Content_Array);
+        File file = new File("Fii" + ".png");
+        ImageIO.write(bImg, "png", file);
+
+    ArrayList<BufferedImage> io = imageTreatment.frameAnallyzer(mainColor, bufi);
+      
+    ArrayList<Color> FramesMainColor = new ArrayList<>();
+    
+    for(int t =0;t<io.size();t++)
+    FramesMainColor.add(getImageMainColor(io.get(t)));
+
+    System.out.println("Recognizer...");
+    
+    String result = imageRecognizer.getImageQuadrantWithTolerance(FramesMainColor, mainColor, 20,true,false,false,false);
+    System.out.println(result);
     
     }
     
 }
 ```
 
-*Current version: 1.4v*
+*Current version: 1.6v*
 
 **By Matheus Markies**
