@@ -66,6 +66,7 @@ static File TXT_File = new File("\\File.txt"); // file directory + file
 ```
 
 **API mode: https://www.dropbox.com/s/kxuon3mivxsc2it/Java_Utilities1.4v.jar?dl=0**
+
 ImageUtilities -->
 
 ```java
