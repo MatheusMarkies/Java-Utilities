@@ -32,7 +32,7 @@ public class ImagePattern {
 
     public static void main(String[] args) throws FileNotFoundException, AWTException, IOException {
 
-        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\il_570xN.1649501246_g4qj.png"));
+        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\OliverCat.png"));
         BufferedImage bufi = ImageIO.read(is);
 
         Color mainColor = getImageMainColor(bufi);
@@ -43,14 +43,23 @@ public class ImagePattern {
 
         BufferedImage bImg = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
         for (PatternPixelSet pps : pattern) {
-
-            System.out.println(pps.getType() + " | line: " + pps.getLine() + " Color: " + pps.getColor());
-           bImg.setRGB(pps.getPixelWidth(), pps.getPixelHeight(), pps.getColor().getRGB());
+        System.out.println(pps.getType() + " | line: " + pps.getLine() + " Color: " + pps.getColor());
+        bImg.setRGB(pps.getPixelWidth(), pps.getPixelHeight(), pps.getColor().getRGB());
         }
-        File file = new File("Fii" + ".png");
+        File file = new File("Border" + ".png");
         ImageIO.write(bImg, "png", file);
+        
+        BufferedImage bImg_ = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
 
-//    ArrayList<BufferedImage> io = imageTreatment.frameAnallyzer(mainColor, bufi);
+        ArrayList<PixelObject> pixelObj = patternAnalizer.getMidLine(bufi, pattern);
+        for (PixelObject po : pixelObj) {
+            System.out.println("X: "+po.getPositionWidth()+" Y: "+ po.getPositionHeight()+" Color: "+ po.getColor().getRGB());
+        bImg_.setRGB(bufi.getWidth()/2, po.getPositionHeight(), po.getColor().getRGB());
+        }
+        File file_ = new File("Mid" + ".png");
+        ImageIO.write(bImg_, "png", file_);
+         
+//    ArrayList<BufferedImage> io = imageTreatment.frameAnallyzer(mainColor, bufi);1
 //      
 //    ArrayList<Color> FramesMainColor = new ArrayList<>();
 //    
@@ -564,6 +573,52 @@ public class ImagePattern {
          
          
         return form;
+        }
+        public static ArrayList<PixelObject> getMidLine(BufferedImage imageBase,ArrayList<PatternPixelSet> pps){   
+        ArrayList<PixelObject> PO = new ArrayList<>();
+         
+            int U = imageBase.getWidth();
+            int V = imageBase.getHeight();
+
+            for (int h = 0; h < V; h++) {
+                PatternPixelSet StartPx = null;
+                PatternPixelSet ClosePx = null;
+              
+                 for(PatternPixelSet pp : pps){
+                 if(pp.getPixelHeight() == h && pp.getType() == PatternPixelSet.Type_Set.START_PIXEL)
+                    StartPx = pp;
+                 else if(pp.getPixelHeight() == h && pp.getType() == PatternPixelSet.Type_Set.CLOSE_PIXEL)
+                    ClosePx = pp;
+
+                  if(ClosePx != null && StartPx != null)
+                  break;
+                     
+                 }
+                 
+                 if(ClosePx != null && StartPx != null){
+                 PixelObject p = new PixelObject();
+                 
+                 p.setColor(Color.GREEN);
+                 p.setPositionHeight(h);
+                 
+                 try{
+                 if(StartPx.getPixelWidth() < ClosePx.getPixelWidth())
+                 p.setPositionWidth(ClosePx.getPixelWidth() / StartPx.getPixelWidth());
+                 else if(StartPx.getPixelWidth() > ClosePx.getPixelWidth())
+                 p.setPositionWidth(StartPx.getPixelWidth() / ClosePx.getPixelWidth());
+                 }catch(ArithmeticException e){
+                 System.out.println(e);
+                 } 
+                 
+                 if(StartPx.getPixelWidth() == 0 || ClosePx.getPixelWidth() == 0)
+                 p.setPositionWidth(0);
+                     
+                 PO.add(p);
+                 }
+                
+            }
+        
+        return PO;
         }
         
     }
