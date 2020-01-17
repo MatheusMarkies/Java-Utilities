@@ -39,7 +39,7 @@ public class ImagePattern {
 
         System.out.println("Main Color: " + mainColor);
 
-        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor);
+        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor,false);
 
         BufferedImage bImg = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
         for (PatternPixelSet pps : pattern) {
@@ -53,8 +53,8 @@ public class ImagePattern {
 
         ArrayList<PixelObject> pixelObj = patternAnalizer.getMidLine(bufi, pattern);
         for (PixelObject po : pixelObj) {
-            System.out.println("X: "+po.getPositionWidth()+" Y: "+ po.getPositionHeight()+" Color: "+ po.getColor().getRGB());
-        bImg_.setRGB(bufi.getWidth()/2, po.getPositionHeight(), po.getColor().getRGB());
+            System.out.println("X: "+po.getPositionWidth()+" Y: "+ po.getPositionHeight());
+        bImg_.setRGB((bufi.getWidth()/4)+po.getPositionWidth(), po.getPositionHeight(), po.getColor().getRGB());
         }
         File file_ = new File("Mid" + ".png");
         ImageIO.write(bImg_, "png", file_);
@@ -96,8 +96,6 @@ public class ImagePattern {
         return mainColor;
     }
     public static ArrayList<Color> getRepeatedColor(ArrayList<Color> listl, boolean ignoreExtremes) {
-
-        System.out.println("Old: " + listl.size());
 
         ArrayList<Color> ListColors = listl;
         ArrayList<Color> newArray = new ArrayList<>();
@@ -157,7 +155,6 @@ public class ImagePattern {
         }
 
         newArray = ListColors;
-        System.out.println(ListColors);
         return newArray;
     }
     public static Set<Color> deleteExtremes(Set<Color> hasset_) {
@@ -479,7 +476,7 @@ public class ImagePattern {
 
     static class imagePatternCreate extends ImagePattern {
 
-    public static ArrayList<PatternPixelSet> createImageBorderPattern(BufferedImage imageBase, Color mainColor) {
+    public static ArrayList<PatternPixelSet> createImageBorderPattern(BufferedImage imageBase, Color mainColor,boolean WithMainColor) {
 
             ArrayList<PatternPixelSet> pattern = new ArrayList<>();
 
@@ -492,6 +489,51 @@ public class ImagePattern {
 
                         Color color = new Color(imageBase.getRGB(w, h));
 
+                        if(WithMainColor){
+                           
+                            if (color.getAlpha() != 0) {
+                            if (color.getBlue() != 255 && color.getGreen() != 255 && color.getRed() != 255) {
+                                if (color.getRGB() == mainColor.getRGB()) {
+
+                                if (!CreateStartPx) {
+
+                                    PatternPixelSet pps = new PatternPixelSet();
+                                    pps.setPixelHeight(h);
+                                    pps.setPixelWidth(w);
+
+                                    pps.setType(PatternPixelSet.Type_Set.START_PIXEL);
+                                    pps.setLine(w);
+                                    pps.setColor(color);
+
+                                    pattern.add(pps);
+                                    CreateStartPx = true;     
+                                }
+
+                             }
+                            }
+                        }
+
+                        if (color.getRGB() != mainColor.getRGB()) {
+
+                            if (CreateStartPx) {
+
+                                PatternPixelSet pps = new PatternPixelSet();
+                                pps.setPixelHeight(h);
+                                pps.setPixelWidth(w);
+
+                                pps.setType(PatternPixelSet.Type_Set.CLOSE_PIXEL);
+                                pps.setLine(w);
+                                pps.setColor(color);
+
+                                pattern.add(pps);
+                                CreateStartPx = false;
+
+                            }
+
+                        }
+   
+                        }else{
+                        
                         if (color.getAlpha() != 0) {
                             if (color.getBlue() != 255 && color.getGreen() != 255 && color.getRed() != 255) {
                                 //if (color.getBlue() != 0 && color.getGreen() != 0 && color.getRed() != 0) {
@@ -551,6 +593,8 @@ public class ImagePattern {
 
                         }
 
+                        }
+                        
                     }
 
                 }
@@ -574,7 +618,7 @@ public class ImagePattern {
          
         return form;
         }
-        public static ArrayList<PixelObject> getMidLine(BufferedImage imageBase,ArrayList<PatternPixelSet> pps){   
+        public static ArrayList<PixelObject> getMidLine(BufferedImage imageBase,ArrayList<PatternPixelSet> pps){
         ArrayList<PixelObject> PO = new ArrayList<>();
          
             int U = imageBase.getWidth();
@@ -602,10 +646,7 @@ public class ImagePattern {
                  p.setPositionHeight(h);
                  
                  try{
-                 if(StartPx.getPixelWidth() < ClosePx.getPixelWidth())
-                 p.setPositionWidth(ClosePx.getPixelWidth() / StartPx.getPixelWidth());
-                 else if(StartPx.getPixelWidth() > ClosePx.getPixelWidth())
-                 p.setPositionWidth(StartPx.getPixelWidth() / ClosePx.getPixelWidth());
+                 p.setPositionWidth((ClosePx.getPixelWidth() + StartPx.getPixelWidth())/2);
                  }catch(ArithmeticException e){
                  System.out.println(e);
                  } 
