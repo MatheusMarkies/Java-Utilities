@@ -23,6 +23,8 @@ import javax.swing.JFileChooser;
  */
 public class Sound {
     
+    private static Clip clip;
+    
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         
         JFileChooser fc = new JFileChooser();
@@ -35,7 +37,6 @@ public class Sound {
             StartProcess = true;
 
         }
-
         if (StartProcess) {
 
             AudioInputStream ais = SoundFile.getAudioInputStream(file);
@@ -59,9 +60,13 @@ public class Sound {
     public static class PlaySound extends Sound{
 
         public static void playSoundFile(AudioInputStream ais) throws LineUnavailableException, IOException {
-        Clip clip = AudioSystem.getClip();  
+        clip = AudioSystem.getClip();  
         clip.open(ais);
         clip.start();
+        }
+ 
+        public static Clip getAudioClip(){
+        return clip;
         }
         
     }
