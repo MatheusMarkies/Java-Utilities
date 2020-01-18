@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaUt.TXTUtilities;
+package JavaUt.TextFileUtilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Matheus Markies
  */
-public class ReadTXT {
+public class Read {
     
     static File TXT_File = new File("FilePath\\FileName.txt");
     static FileReader Read_txt;
@@ -29,7 +29,7 @@ public class ReadTXT {
     static int ReadLine;
     static boolean ReadBool;
     
-    public static ArrayList<String> readTXTFile(File file) throws FileNotFoundException{
+    public static ArrayList<String> readFile(File file) throws FileNotFoundException{
         
        ArrayList<String> TXT_Content = new ArrayList<String>();
    
@@ -43,7 +43,7 @@ public class ReadTXT {
         return TXT_Content;
     }
     
-    public static String getTXTLineContent(File file,int Line,int LineIndex){
+    public static String getLineContent(File file,int Line,int LineIndex){
         
         Scanner Reader = null;
         
@@ -69,7 +69,7 @@ public class ReadTXT {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ReadTXT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Read.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     return LineContent;

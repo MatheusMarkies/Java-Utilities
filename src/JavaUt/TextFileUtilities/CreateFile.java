@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaUt.TXTUtilities;
+package JavaUt.TextFileUtilities;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,18 +13,14 @@ import java.io.IOException;
  *
  * @author Matheus Markies
  */
-public class CreateTXT {
+public class CreateFile {
     
-    public static void CreateTXTFile(File file){
-        
-        File TXT_File = new File("FilePatch\\FileName.txt");
-        
-        TXT_File = file;
-        
+    public CreateFile(File file){
+
             try {
-            TXT_File.createNewFile();
+            file.createNewFile();
             FileWriter IndexWriter = null;
-            IndexWriter = new FileWriter(TXT_File.getAbsoluteFile());
+            IndexWriter = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(IndexWriter);
             
             //bw.write("Write...");

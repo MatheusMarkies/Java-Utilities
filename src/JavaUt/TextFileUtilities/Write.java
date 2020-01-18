@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaUt.TXTUtilities;
+package JavaUt.TextFileUtilities;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,9 +14,9 @@ import java.io.IOException;
  *
  * @author Matheus Markies
  */
-public class WriteTXT {
+public class Write {
     
-    public static void Write_TXT_File (File file,String Text) throws IOException{
+    public Write (File file,String Text) throws IOException{
         
         FileWriter IndexWriter = null;
         IndexWriter = new FileWriter(file.getAbsoluteFile());
@@ -27,7 +27,7 @@ public class WriteTXT {
         
     }
     
-        public static void Write_Array_TXT_File (File file,String[] Texts) throws IOException{
+        public Write (File file,String[] Texts) throws IOException{
         
         FileWriter IndexWriter = null;
         IndexWriter = new FileWriter(file.getAbsoluteFile());

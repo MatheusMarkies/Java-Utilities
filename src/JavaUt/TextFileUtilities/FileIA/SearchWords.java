@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaUt.TXTUtilities.TXTIA;
+package JavaUt.TextFileUtilities.FileIA;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Matheus Markies
  */
-public class SearchWordsTXT {
+public class SearchWords {
     
     public static ArrayList<String> Word_Line = new ArrayList<String>();
     public static ArrayList<Integer> Word_Index = new ArrayList<Integer>();

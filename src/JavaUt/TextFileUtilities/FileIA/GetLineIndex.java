@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaUt.TXTUtilities.TXTIA;
+package JavaUt.TextFileUtilities.FileIA;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Matheus Markies
  */
-public class GetTXTLineIndex {
+public class GetLineIndex {
     
     static int LineIndex;
     
@@ -24,7 +24,7 @@ public class GetTXTLineIndex {
     static Scanner Reader;
     static FileReader Read_txt;
     
-    public static int getTXTFileLineIndex(File file) throws FileNotFoundException{
+    public static int GetLineIndex(File file) throws FileNotFoundException{
         
         Read_txt = new FileReader(file);
         Reader  = new Scanner(file);
@@ -45,12 +45,9 @@ public class GetTXTLineIndex {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException ex) {
-                Logger.getLogger(GetTXTLineIndex.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GetLineIndex.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-          return LineIndex;
-    }
-    public static int Get_Line_Index(){
      return LineIndex;
     }
    

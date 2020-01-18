@@ -30,47 +30,47 @@ import javax.imageio.ImageIO;
  */
 public class ImagePattern {
 
-//    public static void main(String[] args) throws FileNotFoundException, AWTException, IOException {
+    public static void main(String[] args) throws FileNotFoundException, AWTException, IOException {
+
+        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\OliverCat.png"));
+        BufferedImage bufi = ImageIO.read(is);
+
+        Color mainColor = getImageMainColor(bufi);
+
+        System.out.println("Main Color: " + mainColor);
+
+        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor,false);
+
+        BufferedImage bImg = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
+        for (PatternPixelSet pps : pattern) {
+        System.out.println(pps.getType() + " | line: " + pps.getLine() + " Color: " + pps.getColor());
+        bImg.setRGB(pps.getPixelWidth(), pps.getPixelHeight(), pps.getColor().getRGB());
+        }
+        File file = new File("Border" + ".png");
+        ImageIO.write(bImg, "png", file);
+        
+        BufferedImage bImg_ = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
+
+        ArrayList<PixelObject> pixelObj = patternAnalizer.getMidLine(bufi, pattern);
+        for (PixelObject po : pixelObj) {
+            System.out.println("X: "+po.getPositionWidth()+" Y: "+ po.getPositionHeight());
+        bImg_.setRGB((bufi.getWidth()/4)+po.getPositionWidth(), po.getPositionHeight(), po.getColor().getRGB());
+        }
+        File file_ = new File("Mid" + ".png");
+        ImageIO.write(bImg_, "png", file_);
+         
+//    ArrayList<BufferedImage> io = imageTreatment.frameAnallyzer(mainColor, bufi);1
+//      
+//    ArrayList<Color> FramesMainColor = new ArrayList<>();
+//    
+//    for(int t =0;t<io.size();t++)
+//    FramesMainColor.add(getImageMainColor(io.get(t)));
 //
-//        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\OliverCat.png"));
-//        BufferedImage bufi = ImageIO.read(is);
-//
-//        Color mainColor = getImageMainColor(bufi);
-//
-//        System.out.println("Main Color: " + mainColor);
-//
-//        ArrayList<PatternPixelSet> pattern = imagePatternCreate.createImageBorderPattern(bufi, mainColor,false);
-//
-//        BufferedImage bImg = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
-//        for (PatternPixelSet pps : pattern) {
-//        System.out.println(pps.getType() + " | line: " + pps.getLine() + " Color: " + pps.getColor());
-//        bImg.setRGB(pps.getPixelWidth(), pps.getPixelHeight(), pps.getColor().getRGB());
-//        }
-//        File file = new File("Border" + ".png");
-//        ImageIO.write(bImg, "png", file);
-//        
-//        BufferedImage bImg_ = new BufferedImage(bufi.getWidth() + 1, bufi.getHeight() + 1, BufferedImage.TYPE_INT_BGR);
-//
-//        ArrayList<PixelObject> pixelObj = patternAnalizer.getMidLine(bufi, pattern);
-//        for (PixelObject po : pixelObj) {
-//            System.out.println("X: "+po.getPositionWidth()+" Y: "+ po.getPositionHeight());
-//        bImg_.setRGB((bufi.getWidth()/4)+po.getPositionWidth(), po.getPositionHeight(), po.getColor().getRGB());
-//        }
-//        File file_ = new File("Mid" + ".png");
-//        ImageIO.write(bImg_, "png", file_);
-//         
-////    ArrayList<BufferedImage> io = imageTreatment.frameAnallyzer(mainColor, bufi);1
-////      
-////    ArrayList<Color> FramesMainColor = new ArrayList<>();
-////    
-////    for(int t =0;t<io.size();t++)
-////    FramesMainColor.add(getImageMainColor(io.get(t)));
-////
-////    System.out.println("Recognizer...");
-////    
-////    String result = imageRecognizerByColor.getImageQuadrantWithTolerance(FramesMainColor, mainColor, 20,true,false,false,false);
-////    System.out.println(result);
-//    }
+//    System.out.println("Recognizer...");
+//    
+//    String result = imageRecognizerByColor.getImageQuadrantWithTolerance(FramesMainColor, mainColor, 20,true,false,false,false);
+//    System.out.println(result);
+    }
 
     public static Color getImageMainColor(BufferedImage ImageBase_) throws IOException {
 
@@ -611,8 +611,8 @@ public class ImagePattern {
         Square, Circle, Triangle, NonEuclideanTriangle, None
         }
         
-        public static Format getPatternFormat(ArrayList<PatternPixelSet> pps){
-         Format form = null;
+        public static ArrayList<Format> getPatternFormat(BufferedImage imageBase,ArrayList<PatternPixelSet> pps){
+        ArrayList<Format> form = new ArrayList<>();
             
          
          
@@ -646,9 +646,9 @@ public class ImagePattern {
                  p.setPositionHeight(h);
                  
                  try{
-                 p.setPositionWidth((ClosePx.getPixelWidth() + StartPx.getPixelWidth())/2);
+                 p.setPositionWidth((ClosePx.getPixelWidth() - StartPx.getPixelWidth())/2);
                  }catch(ArithmeticException e){
-                 System.out.println(e);
+                 System.err.println(e);
                  } 
                  
                  if(StartPx.getPixelWidth() == 0 || ClosePx.getPixelWidth() == 0)
