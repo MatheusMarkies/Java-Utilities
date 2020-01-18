@@ -15,5 +15,41 @@ class FormatObject {
     
     int Radius;
     Vector2 Center;
+    int StartHeightPx;
+    int FinalHeightPx;
+
+    public Vector2 getCenter() {
+        return Center;
+    }
+
+    public int getRadius() {
+        return Radius;
+    }
+
+    public int getStartHeightPx() {
+        return StartHeightPx;
+    }
+
+    public int getFinalHeightPx() {
+        return FinalHeightPx;
+    }
+
+    public void setCenter(Vector2 Center) {
+        this.Center = Center;
+    }
+
+    public void setRadius(int Radius) {
+        this.Radius = Radius;
+    }
+
+    public void setStartHeightPx(int StartHeightPx) {
+        this.StartHeightPx = StartHeightPx;
+    }
+
+    public void setFinalHeightPx(int FinalHeightPx) {
+        this.FinalHeightPx = FinalHeightPx;
+    }
+    
+    
     
 }

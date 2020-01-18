@@ -51,5 +51,14 @@ public class Vector2 {
     Vector2 c = new Vector2(a.getX() / b.getX(), a.getY() / b.getY());
     return c;
     }
+    public String toString() {
+    return "X:"+getX()+",Y:"+getY();
+    }
+    public boolean equals(Object x){
+    if (x == null) return false;
+    if (this.getClass() != x.getClass()) return false;
+    Vector2 that = (Vector2) x;
+    return (this.getX() == that.getX() && this.getY() == that.getY());
+    }
     
 }

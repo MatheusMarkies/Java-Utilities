@@ -61,5 +61,14 @@ public class Vector3 {
     Vector3 c = new Vector3(a.getX() / b.getX(), a.getY() / b.getY(),a.getZ() / b.getZ());
     return c;
     }
+    public String toString() {
+    return "X:"+getX()+",Y:"+getY()+",Z:"+getZ();
+    }
+    public boolean equals(Object x){
+    if (x == null) return false;
+    if (this.getClass() != x.getClass()) return false;
+    Vector3 that = (Vector3) x;
+    return (this.getX() == that.getX() && this.getY() == that.getY() && this.getZ() == that.getZ());
+    }
     
 }

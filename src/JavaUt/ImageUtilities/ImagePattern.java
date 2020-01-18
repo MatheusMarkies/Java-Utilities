@@ -32,7 +32,7 @@ public class ImagePattern {
 
     public static void main(String[] args) throws FileNotFoundException, AWTException, IOException {
 
-        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\OliverCat.png"));
+        InputStream is = new BufferedInputStream(new FileInputStream("C:\\Users\\Matheus Markies\\Desktop\\mice_icon.png"));
         BufferedImage bufi = ImageIO.read(is);
 
         Color mainColor = getImageMainColor(bufi);
@@ -611,7 +611,7 @@ public class ImagePattern {
         Square, Circle, Triangle, NonEuclideanTriangle, None
         }
         
-        public static ArrayList<Format> getPatternFormat(BufferedImage imageBase,ArrayList<PatternPixelSet> pps){
+        public static ArrayList<Format> getPatternFormat(BufferedImage imageBase,ArrayList<PatternPixelSet> pps,ArrayList<PixelObject> pos){
         ArrayList<Format> form = new ArrayList<>();
             
          
