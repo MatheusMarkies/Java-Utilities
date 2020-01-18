@@ -11,11 +11,11 @@ package JavaUt.Logic;
  */
 public class Vector3 {
     
-    int X;
-    int Y;
-    int Z;
+    float X;
+    float Y;
+    float Z;
 
-    public Vector3(int X, int Y, int Z) {
+    public Vector3(float X, float Y, float Z) {
         this.X = X;
         this.Y = Y;
         this.Z = Z;
@@ -25,7 +25,7 @@ public class Vector3 {
         this.X = X;
     }
 
-    public void setZ(int Z) {
+    public void Z() {
         this.Z = Z;
     }
 
@@ -33,16 +33,33 @@ public class Vector3 {
         this.Y = Y;
     }
 
-    public int getX() {
+    public float getX() {
         return X;
     }
 
-    public int getY() {
+    public float getY() {
         return Y;
     }
 
-    public int getZ() {
+    public float getZ() {
         return Z;
+    }
+    
+    public Vector3 addVector(Vector3 a,Vector3 b){
+    Vector3 c = new Vector3(a.getX() + b.getX(), a.getY() + b.getY(), a.getZ() + b.getZ());
+    return c;
+    }
+    public Vector3 subVector(Vector3 a,Vector3 b){
+    Vector3 c = new Vector3(a.getX() - b.getX(), a.getY() - b.getY(),a.getZ() - b.getZ());
+    return c;
+    }
+    public Vector3 multiply(Vector3 a,Vector3 b){
+    Vector3 c = new Vector3(a.getX() * b.getX(), a.getY() * b.getY(),a.getZ() * b.getZ());
+    return c;
+    }
+    public Vector3 divide(Vector3 a,Vector3 b){
+    Vector3 c = new Vector3(a.getX() / b.getX(), a.getY() / b.getY(),a.getZ() / b.getZ());
+    return c;
     }
     
 }

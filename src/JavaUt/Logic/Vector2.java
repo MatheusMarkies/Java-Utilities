@@ -35,4 +35,21 @@ public class Vector2 {
         return X;
     }
     
+    public Vector2 addVector(Vector2 a,Vector2 b){
+    Vector2 c = new Vector2(a.getX() + b.getX(), a.getY() + b.getY());
+    return c;
+    }
+    public Vector2 subVector(Vector2 a,Vector2 b){
+    Vector2 c = new Vector2(a.getX() - b.getX(), a.getY() - b.getY());
+    return c;
+    }
+    public Vector2 multiply(Vector2 a,Vector2 b){
+    Vector2 c = new Vector2(a.getX() * b.getX(), a.getY() * b.getY());
+    return c;
+    }
+    public Vector2 divide(Vector2 a,Vector2 b){
+    Vector2 c = new Vector2(a.getX() / b.getX(), a.getY() / b.getY());
+    return c;
+    }
+    
 }

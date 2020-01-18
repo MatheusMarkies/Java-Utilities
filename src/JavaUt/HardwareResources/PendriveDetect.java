@@ -21,7 +21,7 @@ public class PendriveDetect extends Thread{
     static String Pendrive_Folder;
     static boolean[] isDrive = new boolean[letters.length];
     
-    public void run(){
+    public PendriveDetect(){
 
 for ( int i = 0; i < letters.length; ++i )
     {
@@ -52,19 +52,14 @@ for ( int i = 0; i < letters.length; ++i )
             }
         }
 
-    try { Thread.sleep(100); }
-    catch (InterruptedException e) { 
-    
-    }
-
   }
 
   }
     
-    public static String Get_Pendrive_Folder(){
+    public static String getPendriveFolder(){
     return Pendrive_Folder;
     }
-    public static boolean[] Get_pluggedIn(){
+    public static boolean[] getPluggedIn(){
     return isDrive;
     }
     
