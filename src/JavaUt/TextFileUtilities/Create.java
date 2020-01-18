@@ -13,9 +13,9 @@ import java.io.IOException;
  *
  * @author Matheus Markies
  */
-public class CreateFile {
+public class Create {
     
-    public CreateFile(File file){
+    public static void CreateFile(File file){
 
             try {
             file.createNewFile();

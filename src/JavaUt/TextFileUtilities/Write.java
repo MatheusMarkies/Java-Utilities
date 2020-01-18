@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 public class Write {
     
-    public Write (File file,String Text) throws IOException{
+    public static void WriteFile (File file,String Text) throws IOException{
         
         FileWriter IndexWriter = null;
         IndexWriter = new FileWriter(file.getAbsoluteFile());
@@ -27,7 +27,7 @@ public class Write {
         
     }
     
-        public Write (File file,String[] Texts) throws IOException{
+        public static void WriteFile (File file,String[] Texts) throws IOException{
         
         FileWriter IndexWriter = null;
         IndexWriter = new FileWriter(file.getAbsoluteFile());
