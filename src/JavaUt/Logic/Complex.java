@@ -7,10 +7,6 @@ package JavaUt.Logic;
 
 import java.util.Objects;
 
-/**
- *
- * @author Matheus Markies
- */
 public class Complex {
     private final double re;
     private final double im;
