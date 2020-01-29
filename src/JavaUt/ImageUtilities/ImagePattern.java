@@ -217,7 +217,7 @@ public class ImagePattern {
         return newArray;
     }
     
-    static class imageTreatment extends ImagePattern {
+    public static class imageTreatment extends ImagePattern {
 
         static ArrayList<BufferedImage> frameAnallyzer(Color mainColor, BufferedImage in) throws AWTException, IOException {
 
@@ -346,7 +346,7 @@ public class ImagePattern {
 
     }
 
-    static class imageRecognizerByColor extends ImagePattern {
+    public static class imageRecognizerByColor extends ImagePattern {
 
         static String getImageQuadrantWithTolerance(ArrayList<Color> framesColors, Color mainColor, int Tolerance, boolean redActive, boolean greenActive, boolean blueActive, boolean SmartTolerance) {
 
@@ -474,7 +474,7 @@ public class ImagePattern {
 
     }
 
-    static class imagePatternCreate extends ImagePattern {
+    public static class imagePatternCreate extends ImagePattern {
 
     public static ArrayList<PatternPixelSet> createImageBorderPattern(BufferedImage imageBase, Color mainColor,boolean WithMainColor) {
 
@@ -605,7 +605,7 @@ public class ImagePattern {
 
     }
 
-    static class patternAnalizer extends ImagePattern{
+    public static class patternAnalizer extends ImagePattern{
         
         enum Format{
         Square, Circle, Triangle, NonEuclideanTriangle, None
