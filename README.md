@@ -25,7 +25,7 @@
 
 ## How to use:
 
-**API: https://www.dropbox.com/s/kxuon3mivxsc2it/Java_Utilities1.4v.jar?dl=0**
+**API: https://www.dropbox.com/s/hslvbo0hjs3mn1d/JavaUt%201.7v.jar?dl=0**
 
 *(ImageUtilities)*
 
