@@ -70,6 +70,8 @@ public class DINO_NeuronSimulation {
 }
 ```
 
+[![Little red ridning hood](http://img.youtube.com/vi/dWkSWJJ7J4c/0.jpg)](https://www.youtube.com/watch?v=dWkSWJJ7J4c "Little red riding hood - Click to Watch!")
+
 *Current version: 1.6v*
 
 **By Matheus Markies**
