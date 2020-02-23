@@ -69,6 +69,6 @@ public class DINO_NeuronSimulation {
 
 [![Image Treatment Test!](http://img.youtube.com/vi/dWkSWJJ7J4c/0.jpg)](https://www.youtube.com/watch?v=dWkSWJJ7J4c "Little red riding hood - Click to Watch!")
 
-*Current version: 1.6v*
+*Current version: 1.7v*
 
 **By Matheus Markies**
