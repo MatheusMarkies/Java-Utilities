@@ -20,7 +20,7 @@ class PatternPixelSet{
     Color color;
     
     enum Type_Set{
-    START_PIXEL,CLOSE_PIXEL
+    START_PIXEL,CLOSE_PIXEL,NONE
     }
     
     public int getLine(){
